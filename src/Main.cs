@@ -6,7 +6,6 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Modules.Commands;
 using System.Linq;
 using CounterStrikeSharp.API.Modules.Utils;
-using CounterStrikeSharp.API.Modules.Menu;
 
 namespace CS2AdminsList;
 
@@ -18,6 +17,7 @@ public class PluginConfig : BasePluginConfig
     public string[] AdminFlag { get; set; } = ["@css/generic"];
     public bool ShowAdminGroup { get; set; } = true;
     public bool FreezePlayerInMenu { get; set; } = true;
+    public bool DisableMenuCredits { get; set; } = true;
     public bool ShowYourSelf { get; set; } = true;
 }
 
@@ -130,11 +130,12 @@ public class AdminsList : BasePlugin, IPluginConfig<PluginConfig>
                 continue;
 
             string groupDisplay = Config.ShowAdminGroup && adminData.Groups.Count > 0
-                ? $" [ {FormatGroupList(adminData.Groups)} ]"
+                ? $" [ <font color=\"#00FF00\">{FormatGroupList(adminData.Groups)}</font> ]"
                 : string.Empty;
 
-            var menuText = $"{admin.PlayerName}{groupDisplay}";
-            items.Add(new MenuItem(MenuItemType.Text, new MenuValue($"{admin.PlayerName}{groupDisplay}")));
+            var menuText = $"<font color=\"#FFFF00\">{admin.PlayerName}</font>{groupDisplay}";
+
+            items.Add(new MenuItem(MenuItemType.Text, new MenuValue(menuText)));
         }
 
         menu.ShowScrollableMenu(player, menuTitle, items, (buttons, currentMenu, selectedItems) =>
@@ -142,8 +143,9 @@ public class AdminsList : BasePlugin, IPluginConfig<PluginConfig>
             if (buttons == MenuButtons.Exit)
                 return;
 
-        }, false, Config.FreezePlayerInMenu);
+        }, isSubmenu:false, freezePlayer:Config.FreezePlayerInMenu, disableDeveloper: Config.DisableMenuCredits);
     }
+
 
     private void ShowNoAdminsMenu(CCSPlayerController player)
     {
@@ -151,7 +153,7 @@ public class AdminsList : BasePlugin, IPluginConfig<PluginConfig>
         var empty = Localizer["admin.empty.option.center"];
         List<MenuItem> adminEmpty = new List<MenuItem>
         {
-           new MenuItem(MenuItemType.Text, new MenuValue(empty))
+            new MenuItem(MenuItemType.Text, new MenuValue($"<font color=\"#FFFF00\">{empty}</font>"))
         };
 
         menu.ShowScrollableMenu(player, Localizer["admin.title"], adminEmpty, (menuButtons, currentMenu, selectedItem) =>
@@ -159,7 +161,7 @@ public class AdminsList : BasePlugin, IPluginConfig<PluginConfig>
             if (menuButtons == MenuButtons.Exit)
                 return;
 
-        }, false, Config.FreezePlayerInMenu);
+        }, isSubmenu:false, freezePlayer:Config.FreezePlayerInMenu, disableDeveloper: Config.DisableMenuCredits);
     }
 
     public void Command_Hide(CCSPlayerController? player, CommandInfo info)
