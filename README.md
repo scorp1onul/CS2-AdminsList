@@ -10,6 +10,7 @@ Simple plugin for Counter Strike 2 that allows players to see active admins with
   "AdminFlag": [ "@css/generic" ], // what flag does admin need to have to be shown. You probably won't have to edit this.
   "ShowAdminGroup": true, // if its enable then it will be Marius [ Fondator ] if not it will be only Marius.
   "FreezePlayerInMenu": true, // wheter to freeze or not player in center menu.
+  "DisableCreditsMenu": true, // wheter to show or not the KitsuneDevelopers AD.
   "ShowYourSelf": true, // show urself in admins.
   "ConfigVersion": 1
 }
