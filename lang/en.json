@@ -1,0 +1,9 @@
+{
+  "prefix": "{silver}<{red} Admin {silver}> ",
+  "admin.title": "[ Admins Online ]",
+  "admin.title.chat": "{yellow}Admins Online",
+  "admin.empty.option.chat": "No admins online at the moment.",
+  "admin.empty.option.center": "No admins online at the moment.",
+  "admin.hide": "You're {red}hidden{silver} from admins list.",
+  "admin.unhide": "You're {green}not hidden{silver} from admins list."
+}
