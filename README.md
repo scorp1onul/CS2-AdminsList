@@ -14,3 +14,5 @@ Simple plugin for Counter Strike 2 that allows players to see active admins with
   "ConfigVersion": 1
 }
 ```
+![20241116175136_1](https://github.com/user-attachments/assets/9f6fe491-23da-453a-a16c-2e91f5ef85a3)
+
