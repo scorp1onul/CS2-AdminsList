@@ -1,0 +1,12 @@
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\CS2-AdminsList.csproj.AssemblyReference.cache
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\CS2-AdminsList.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\CS2-AdminsList.csproj.CoreCompileInputs.cache
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\bin\Release\addons\counterstrikesharp\plugins\CS2-AdminsList\lang\en.json
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\bin\Release\addons\counterstrikesharp\plugins\CS2-AdminsList\lang\ro.json
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\bin\Release\addons\counterstrikesharp\plugins\CS2-AdminsList\CS2-AdminsList.deps.json
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\bin\Release\addons\counterstrikesharp\plugins\CS2-AdminsList\CS2-AdminsList.dll
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\bin\Release\addons\counterstrikesharp\plugins\CS2-AdminsList\KitsuneMenu.dll
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\CS2-Admi.48E811F8.Up2Date
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\CS2-AdminsList.dll
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\refint\CS2-AdminsList.dll
+C:\Users\Chapp\Documents\GitHub\CS2-AdminsList\obj\Debug\ref\CS2-AdminsList.dll

@@ -60,45 +60,54 @@ public class AdminsList : BasePlugin, IPluginConfig<PluginConfig>
         return string.Join(", ", groups.Select(FormatGroupName));
     }
 
-    public void Command_AdminsList(CCSPlayerController? player, CommandInfo info)
+public void Command_AdminsList(CCSPlayerController? player, CommandInfo info)
+{
+    if (player == null || !player.IsValid || player.IsBot)
+        return;
+
+    // Verificare dacă are permisiunile de admin
+    if (!AdminManager.PlayerHasPermissions(player, Config.AdminFlag))
     {
-        if (player == null || !player.IsValid || player.IsBot)
-            return;
+        player.PrintToChat(Localizer["prefix"] + "Nu ai permisiunea să folosești această comandă.");
+        return;
+    }
 
-        var admins = Utilities.GetPlayers()
-            .Where(p => p.IsValid && !p.IsBot)
-            .Where(p => AdminManager.PlayerHasPermissions(p, Config.AdminFlag))
-            .Where(p => !hiddenAdmins.Contains(p.SteamID))
-            .ToList();
+    var admins = Utilities.GetPlayers()
+        .Where(p => p.IsValid && !p.IsBot)
+        .Where(p => AdminManager.PlayerHasPermissions(p, Config.AdminFlag))
+        .Where(p => !hiddenAdmins.Contains(p.SteamID))
+        .ToList();
 
-        if (!Config.ShowYourSelf)
-        {
-            admins.Remove(player);
-        }
+    if (!Config.ShowYourSelf)
+    {
+        admins.Remove(player);
+    }
 
-        if (admins.Count == 0)
-        {
-            switch (Config.ShowAdminsTo.ToLower())
-            {
-                case "center":
-                    ShowNoAdminsMenu(player);
-                    break;
-                case "chat":
-                    player.PrintToChat(Localizer["prefix"] + Localizer["admin.empty.option.chat"]);
-                    break;
-            }
-            return;
-        }
+    if (admins.Count == 0)
+    {
         switch (Config.ShowAdminsTo.ToLower())
         {
             case "center":
-                ShowAdminsMenu(player, admins); 
+                ShowNoAdminsMenu(player);
                 break;
             case "chat":
-                ShowAdminsChat(player, admins);
-                break;        
+                player.PrintToChat(Localizer["prefix"] + Localizer["admin.empty.option.chat"]);
+                break;
         }
+        return;
     }
+
+    switch (Config.ShowAdminsTo.ToLower())
+    {
+        case "center":
+            ShowAdminsMenu(player, admins); 
+            break;
+        case "chat":
+            ShowAdminsChat(player, admins);
+            break;        
+    }
+}
+
     private void ShowAdminsChat(CCSPlayerController player, List<CCSPlayerController> admins)
     {
         player.PrintToChat(Localizer["admin.title.chat"]);
